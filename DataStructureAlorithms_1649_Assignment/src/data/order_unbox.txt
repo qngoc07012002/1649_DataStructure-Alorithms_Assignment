@@ -1,0 +1,100 @@
+Monster Energy Zero Sugar|2.2|Opened
+Monster Energy|2.2|Opened
+Monster Energy Ultra|2.2|Opened
+Red Bull Cherry Edition|2.0|Opened
+Red Bull Sugarfree|2.0|Opened
+Red Bull|2.0|Opened
+Gatorade Zero|1.8|Opened
+Gatorade|1.8|Opened
+Gatorade Glacier Freeze|1.8|Opened
+Powerade Zero|1.7|Opened
+Powerade|1.7|Opened
+Powerade Arctic Blast|1.7|Opened
+Vitaminwater Zero|1.5|Opened
+Dr. Pepper Diet|1.5|Opened
+Snapple Diet|1.5|Opened
+CocaCola Zero Sugar|1.5|Opened
+Dasani Diet|1.5|Opened
+Dasani|1.5|Opened
+CocaCola Cherry|1.5|Opened
+Snapple|1.5|Opened
+Dr. Pepper Cherry|1.5|Opened
+Vitaminwater|1.5|Opened
+Dr. Pepper|1.5|Opened
+Vitaminwater XXX|1.5|Opened
+Pepsi|1.5|Opened
+Mountain Dew Zero Sugar|1.4|Opened
+Nestle Pure Life|1.4|Opened
+Canada Dry Diet|1.4|Opened
+Fiji Water|1.4|Opened
+Lipton Diet Iced Tea|1.4|Opened
+Evian|1.4|Opened
+Tropicana Light|1.4|Opened
+Tropicana|1.4|Opened
+Evian Zero Sugar|1.4|Opened
+Lipton Iced Tea|1.4|Opened
+Fiji Water Zero Sugar|1.4|Opened
+Canada Dry|1.4|Opened
+Nestle Pure Life Zero Sugar|1.4|Opened
+Mountain Dew|1.4|Opened
+Mountain Dew Code Red|1.4|Opened
+Canada Dry Blackberry|1.4|Opened
+CocaCola|1.4|Opened
+Lipton Peach Iced Tea|1.4|Opened
+A&W Diet Root Beer|1.3|Opened
+Sunkist Zero Sugar|1.3|Opened
+Pepsi Zero Sugar|1.3|Opened
+Crush Zero Sugar|1.3|Opened
+Ice Mountain|1.3|Opened
+Honest Tea Zero Sugar|1.3|Opened
+Poland Spring|1.3|Opened
+Simply Orange Light|1.3|Opened
+Aquafina|1.3|Opened
+Aquafina Zero Sugar|1.3|Opened
+Simply Orange|1.3|Opened
+Poland Spring Light|1.3|Opened
+Honest Tea|1.3|Opened
+Ice Mountain Light|1.3|Opened
+Crush|1.3|Opened
+Pepsi Wild Cherry|1.3|Opened
+Sunkist|1.3|Opened
+A&W Cream Soda|1.3|Opened
+A&W Root Beer|1.3|Opened
+Sunkist Orange|1.3|Opened
+Fanta|1.3|Opened
+Crush Pineapple|1.3|Opened
+Schweppes Zero Sugar|1.2|Opened
+Mirinda Diet|1.2|Opened
+7UP Zero Sugar|1.2|Opened
+Arizona Diet Iced Tea|1.2|Opened
+Diet Sprite|1.2|Opened
+Minute Maid Light|1.2|Opened
+Arrowhead|1.2|Opened
+Welch's Light|1.2|Opened
+Voss|1.2|Opened
+Perrier Zero Sugar|1.2|Opened
+Perrier|1.2|Opened
+Voss Zero Sugar|1.2|Opened
+Welch's|1.2|Opened
+Arrowhead Zero Sugar|1.2|Opened
+Minute Maid|1.2|Opened
+Sprite Cranberry|1.2|Opened
+Arizona Iced Tea|1.2|Opened
+7UP Cherry|1.2|Opened
+Mirinda|1.2|Opened
+Schweppes Raspberry|1.2|Opened
+Schweppes|1.2|Opened
+Mirinda Lime|1.2|Opened
+7UP|1.2|Opened
+Sprite|1.2|Opened
+Fanta Zero Sugar|1.1|Opened
+Deer Park|1.1|Opened
+Ocean Spray Diet|1.1|Opened
+Smartwater|1.1|Opened
+San Pellegrino Diet|1.1|Opened
+San Pellegrino|1.1|Opened
+Smartwater Zero Sugar|1.1|Opened
+Ocean Spray|1.1|Opened
+Deer Park Diet|1.1|Opened
+Barq's|1.1|Opened
+Fanta Strawberry|1.1|Opened

@@ -1,30 +1,100 @@
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
+CocaCola|1.4|Not Yet
+Pepsi|1.5|Available
+Sprite|1.2|Available
+Fanta|1.3|Not Yet
+Mountain Dew|1.4|Available
+Dr. Pepper|1.5|Not Yet
+7UP|1.2|Available
+Red Bull|2.0|Not Yet
+Monster Energy|2.2|Available
+Gatorade|1.8|Available
+Powerade|1.7|Not Yet
+Vitaminwater|1.5|Available
+A&W Root Beer|1.3|Not Yet
+Schweppes|1.2|Available
+Canada Dry|1.4|Available
+Sunkist|1.3|Not Yet
+Mirinda|1.2|Available
+Barq's|1.1|Not Yet
+Crush|1.3|Available
+Lipton Iced Tea|1.4|Not Yet
+Snapple|1.5|Available
+Arizona Iced Tea|1.2|Available
+Honest Tea|1.3|Not Yet
+Tropicana|1.4|Available
+Minute Maid|1.2|Available
+Simply Orange|1.3|Not Yet
+Ocean Spray|1.1|Available
+Welch's|1.2|Not Yet
+Evian|1.4|Available
+Dasani|1.5|Available
+Aquafina|1.3|Not Yet
+Perrier|1.2|Available
+San Pellegrino|1.1|Not Yet
+Fiji Water|1.4|Available
+Poland Spring|1.3|Available
+Voss|1.2|Not Yet
+Smartwater|1.1|Available
+Ice Mountain|1.3|Available
+Arrowhead|1.2|Not Yet
+Deer Park|1.1|Available
+Nestle Pure Life|1.4|Available
+CocaCola Zero Sugar|1.5|Not Yet
+Pepsi Zero Sugar|1.3|Available
+Diet Sprite|1.2|Available
+Fanta Zero Sugar|1.1|Not Yet
+Mountain Dew Zero Sugar|1.4|Available
+Dr. Pepper Diet|1.5|Available
+7UP Zero Sugar|1.2|Not Yet
+Red Bull Sugarfree|2.0|Available
+Monster Energy Zero Sugar|2.2|Not Yet
+Gatorade Zero|1.8|Available
+Powerade Zero|1.7|Available
+Vitaminwater Zero|1.5|Not Yet
+A&W Diet Root Beer|1.3|Available
+Schweppes Zero Sugar|1.2|Available
+Canada Dry Diet|1.4|Not Yet
+Sunkist Zero Sugar|1.3|Available
+Mirinda Diet|1.2|Available
+Crush Zero Sugar|1.3|Not Yet
+Lipton Diet Iced Tea|1.4|Available
+Snapple Diet|1.5|Available
+Arizona Diet Iced Tea|1.2|Not Yet
+Honest Tea Zero Sugar|1.3|Available
+Tropicana Light|1.4|Available
+Minute Maid Light|1.2|Not Yet
+Simply Orange Light|1.3|Available
+Ocean Spray Diet|1.1|Available
+Welch's Light|1.2|Not Yet
+Evian Zero Sugar|1.4|Available
+Dasani Diet|1.5|Available
+Aquafina Zero Sugar|1.3|Not Yet
+Perrier Zero Sugar|1.2|Available
+San Pellegrino Diet|1.1|Available
+Fiji Water Zero Sugar|1.4|Not Yet
+Poland Spring Light|1.3|Available
+Voss Zero Sugar|1.2|Available
+Smartwater Zero Sugar|1.1|Not Yet
+Ice Mountain Light|1.3|Available
+Arrowhead Zero Sugar|1.2|Available
+Deer Park Diet|1.1|Not Yet
+Nestle Pure Life Zero Sugar|1.4|Available
+CocaCola Cherry|1.5|Available
+Pepsi Wild Cherry|1.3|Not Yet
+Sprite Cranberry|1.2|Available
+Fanta Strawberry|1.1|Available
+Mountain Dew Code Red|1.4|Not Yet
+Dr. Pepper Cherry|1.5|Available
+7UP Cherry|1.2|Available
+Red Bull Cherry Edition|2.0|Not Yet
+Monster Energy Ultra|2.2|Available
+Gatorade Glacier Freeze|1.8|Available
+Powerade Arctic Blast|1.7|Not Yet
+Vitaminwater XXX|1.5|Available
+A&W Cream Soda|1.3|Available
+Schweppes Raspberry|1.2|Not Yet
+Canada Dry Blackberry|1.4|Available
+Sunkist Orange|1.3|Available
+Mirinda Lime|1.2|Not Yet
+Crush Pineapple|1.3|Available
+Lipton Peach Iced Tea|1.4|Not Yet
