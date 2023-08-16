@@ -81,10 +81,8 @@ public class Client {
 
 
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
         } finally {
             System.out.println("All orders delivered successfully: " + totalTime + "ms");
         }
@@ -108,7 +106,7 @@ public class Client {
                 }
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
         finally {
             System.out.println("All orders read from file order_list.txt have been added to Queue!");
@@ -155,55 +153,60 @@ public class Client {
         long endTime;
         long totalTime;
         int choice = 0;
-        while (choice != 7){
+        while (choice != 7) {
             showMenu();
-            System.out.print("Enter your choice: ");
-            choice = Integer.parseInt(scn.nextLine());
-            System.out.println();
-            switch (choice){
-                case 1:
-                    startTime = System.currentTimeMillis();
-                    readOrderListFromFile();
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
-                case 2:
-                    startTime = System.currentTimeMillis();
-                    addOrdertoQueue();
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
-                case 3:
-                    startTime = System.currentTimeMillis();
-                    sendOrdertoServer();
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
-                case 4:
-                    startTime = System.currentTimeMillis();
-                    showOrderHasDelivered();
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
-                case 5:
-                    startTime = System.currentTimeMillis();
-                    quickSort(orderStack);
-                    System.out.println("Sort Successful");
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
-                case 6:
-                    startTime = System.currentTimeMillis();
-                    exportOrderFromStack();
-                    endTime = System.currentTimeMillis();
-                    totalTime = endTime - startTime;
-                    System.out.println("Time Complexity: " + totalTime + "ms");
-                    break;
+            try {
+                System.out.print("Enter your choice: ");
+                choice = Integer.parseInt(scn.nextLine());
+                System.out.println();
+
+                switch (choice) {
+                    case 1:
+                        startTime = System.currentTimeMillis();
+                        readOrderListFromFile();
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                    case 2:
+                        startTime = System.currentTimeMillis();
+                        addOrdertoQueue();
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                    case 3:
+                        startTime = System.currentTimeMillis();
+                        sendOrdertoServer();
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                    case 4:
+                        startTime = System.currentTimeMillis();
+                        showOrderHasDelivered();
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                    case 5:
+                        startTime = System.currentTimeMillis();
+                        quickSort(orderStack);
+                        System.out.println("Sort Successful");
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                    case 6:
+                        startTime = System.currentTimeMillis();
+                        exportOrderFromStack();
+                        endTime = System.currentTimeMillis();
+                        totalTime = endTime - startTime;
+                        System.out.println("Time Complexity: " + totalTime + "ms");
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid choice.");
             }
         }
     }
