@@ -1,5 +1,7 @@
 package StoreOnline;
 
+import model.Order;
+
 import java.io.*;
 import java.net.*;
 import java.util.Queue;

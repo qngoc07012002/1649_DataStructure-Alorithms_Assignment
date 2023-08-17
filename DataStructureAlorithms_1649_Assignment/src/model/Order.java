@@ -1,11 +1,11 @@
-package StoreOnline;
+package model;
 
 import java.io.Serializable;
 
 public class Order implements Serializable {
-    String name;
-    double price;
-    String status;
+    public String name;
+    public double price;
+    public String status;
 
     public Order(String name, double price, String status) {
         this.name = name;

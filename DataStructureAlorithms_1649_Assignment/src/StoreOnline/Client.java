@@ -4,12 +4,10 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 import implementations.*;
-
+import model.Order;
 
 
 public class Client {
-    private static final String SERVER_IP = "127.0.0.1";
-    private static final int SERVER_PORT = 1111;
     private static Scanner scn = new Scanner(System.in);
 
     private static Queue<Order> orderQueue = new Queue<Order>();
@@ -20,6 +18,102 @@ public class Client {
         mainMenu();
     }
 
+    public static void readOrderListFromFile() {
+
+        String filename = "D:\\GitHubClone\\1649_DataStructure-Alorithms_Assignment\\DataStructureAlorithms_1649_Assignment\\src\\data\\order_list.txt";
+
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = fileReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 2) {
+                    String name = parts[0];
+                    double price = Double.parseDouble(parts[1]);
+                    String status = "Not Yet";
+                    orderQueue.offer(new Order(name, price, status));
+                } else throw new Exception("Invalid Format");
+            }
+            if (orderQueue.isEmpty()) throw new Exception("Queue is Empty"); else {
+                System.out.println("All orders read from file order_list.txt have been added to Queue!");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void addOrdertoQueue(){
+        try {
+            System.out.println("Enter your order");
+            String name;
+            do {
+                System.out.print("Name: ");
+                name = scn.nextLine();
+            } while (name == null || name.isEmpty());
+            System.out.print("Price: ");
+            double price = Double.parseDouble(scn.nextLine());
+            orderQueue.offer(new Order(name, price, "Not Yet"));
+            System.out.println("Add to Queue successful");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid price format.");
+        }
+    }
+
+    public static void sendOrdertoServer(){
+        try (Socket socket = new Socket("localhost", 1111)) {
+            ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
+
+            if (orderQueue.isEmpty()) throw new Exception("Queue is Empty"); else {
+                System.out.println("Send order to server ");
+                while (!orderQueue.isEmpty()) {
+
+                    outStream.writeObject(orderQueue.poll());
+                    System.out.print(".");
+
+                    orderStack.push((Order) inStream.readObject());
+                }
+                System.out.println();
+                System.out.println("All orders delivered successfully: ");
+                System.out.println();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
+
+    public static void exportOrderFromStack(){
+        String filename = "D:\\GitHubClone\\1649_DataStructure-Alorithms_Assignment\\DataStructureAlorithms_1649_Assignment\\src\\data\\order_unbox.txt";
+
+        try {
+            if (orderStack.isEmpty()) throw new Exception("Stack is Empty");
+            else {
+                FileWriter writer = new FileWriter(filename);
+
+                while (!orderStack.isEmpty()) {
+                    Order item = orderStack.pop();
+                    item.status = "Opened";
+                    writer.write(item.name + "|" + item.price + "|" + item.status+"\n");
+                }
+
+                writer.close();
+                System.out.println("All orders from stack have been exported to order_unbox.txt!");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void showOrderHasDelivered(){
+        try{
+            if (orderStack.isEmpty()) throw new Exception("Stack is Empty");
+            else System.out.println(orderStack);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
     public static void quickSort(Stack<Order> stack) {
         if (stack.isEmpty()) {
             return;
@@ -54,99 +148,8 @@ public class Client {
         while (!tempStack.isEmpty()) {
             stack.push(tempStack.pop());
         }
-    }
-
-
-    public static void sendOrdertoServer(){
-        long totalTime = 0;
-        try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
-            ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
-//            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-//            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-            int currentSize = orderQueue.size();
-
-            System.out.println("Send order to server ");
-
-            while (!orderQueue.isEmpty()) {
-
-                outStream.writeObject(orderQueue.poll());
-                System.out.print(".");
-
-                orderStack.push((Order) inStream.readObject());
-            }
-            System.out.println();
-
-
-
-
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            System.out.println("All orders delivered successfully: " + totalTime + "ms");
-        }
 
     }
-
-
-    public static void readOrderListFromFile() {
-
-        String filename = "D:\\GitHubClone\\1649_DataStructure-Alorithms_Assignment\\DataStructureAlorithms_1649_Assignment\\src\\data\\order_list.txt";
-
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = fileReader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length == 3) {
-                    String name = parts[0];
-                    double price = Double.parseDouble(parts[1]);
-                    String status = parts[2];
-                    orderQueue.offer(new Order(name, price, status));
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        finally {
-            System.out.println("All orders read from file order_list.txt have been added to Queue!");
-        }
-    }
-
-    public static void exportOrderFromStack(){
-        String filename = "D:\\GitHubClone\\1649_DataStructure-Alorithms_Assignment\\DataStructureAlorithms_1649_Assignment\\src\\data\\order_unbox.txt";
-
-        try {
-            FileWriter writer = new FileWriter(filename);
-
-            while (!orderStack.isEmpty()) {
-                Order item = orderStack.pop();
-                item.status = "Opened";
-                writer.write(item.name + "|" + item.price + "|" + item.status+"\n");
-            }
-
-            writer.close();
-            System.out.println("All orders from stack have been exported to order_unbox.txt!");
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-
-    public static void showOrderHasDelivered(){
-        System.out.println(orderStack);
-    }
-
-    public static void addOrdertoQueue(){
-        System.out.println("Enter your order");
-        System.out.print("Name: ");
-        String name = scn.nextLine();
-        System.out.print("Price: ");
-        double price = Double.parseDouble(scn.nextLine());
-        orderQueue.offer(new Order(name,price,"Not Yet"));
-        System.out.println("Add to Queue successful");
-    }
-
-
 
     public static void mainMenu(){
         long startTime;
@@ -190,13 +193,16 @@ public class Client {
                         System.out.println("Time Complexity: " + totalTime + "ms");
                         break;
                     case 5:
-                        startTime = System.currentTimeMillis();
-                        quickSort(orderStack);
-                        System.out.println("Sort Successful");
-                        endTime = System.currentTimeMillis();
-                        totalTime = endTime - startTime;
-                        System.out.println("Time Complexity: " + totalTime + "ms");
-                        break;
+                        if (orderStack.isEmpty()) System.out.println("Stack is Empty");
+                         else {
+                            startTime = System.currentTimeMillis();
+                            quickSort(orderStack);
+                            System.out.println("Sort Successful");
+                            endTime = System.currentTimeMillis();
+                            totalTime = endTime - startTime;
+                            System.out.println("Time Complexity: " + totalTime + "ms");
+                            break;
+                        }
                     case 6:
                         startTime = System.currentTimeMillis();
                         exportOrderFromStack();
