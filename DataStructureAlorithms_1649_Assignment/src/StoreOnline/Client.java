@@ -14,8 +14,24 @@ public class Client {
 
     private static Stack<Order> orderStack = new Stack<Order>();
 
+    private static Socket socket;
+    private static ObjectOutputStream outStream;
+    private static ObjectInputStream inStream;
+
     public static void main(String[] args) {
+        Initialization();
         mainMenu();
+    }
+
+    public static void Initialization(){
+        try {
+            socket = new Socket("localhost", 1111);
+            outStream =  new ObjectOutputStream(socket.getOutputStream());
+            inStream = new ObjectInputStream(socket.getInputStream());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void readOrderListFromFile() {
@@ -59,19 +75,22 @@ public class Client {
     }
 
     public static void sendOrdertoServer(){
-        try (Socket socket = new Socket("localhost", 1111)) {
-            ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
+        try {
+//            ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
+//            ObjectInputStream inStream = new ObjectInputStream(socket.getInputStream());
 
             if (orderQueue.isEmpty()) throw new Exception("Queue is Empty"); else {
                 System.out.println("Send order to server ");
                 while (!orderQueue.isEmpty()) {
 
                     outStream.writeObject(orderQueue.poll());
+                    outStream.flush();
                     System.out.print(".");
 
                     orderStack.push((Order) inStream.readObject());
                 }
+                outStream.writeObject(null);
+                outStream.flush();
                 System.out.println();
                 System.out.println("All orders delivered successfully: ");
                 System.out.println();

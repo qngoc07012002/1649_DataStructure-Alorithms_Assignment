@@ -11,18 +11,16 @@ public class Server {
     private static final int PORT = 1111;
     private static Queue<Order> orderQueue = new ConcurrentLinkedQueue<Order>();
 
+    private static ServerSocket serverSocket;
+
+    private static ObjectInputStream inStream;
+    private static ObjectOutputStream clientWriter;
+
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            System.out.println("Server is listening on port " + PORT);
-
-            Socket clientSocket = serverSocket.accept();
-            System.out.println("Client connected: " + clientSocket.getInetAddress());
-
-            ObjectOutputStream clientWriter = new ObjectOutputStream(clientSocket.getOutputStream());
-            ObjectInputStream inStream = new ObjectInputStream(clientSocket.getInputStream());
-
-            Thread receiveThread = new Thread(new ReceiveOrder(clientSocket, inStream));
-            Thread processThread = new Thread(new ProcessOrder(clientWriter));
+        try {
+            Initialization();
+            Thread receiveThread = new Thread(new ReceiveOrder());
+            Thread processThread = new Thread(new ProcessOrder());
 
             receiveThread.start();
             processThread.start();
@@ -30,56 +28,62 @@ public class Server {
             receiveThread.join();
             processThread.join();
 
-        } catch (IOException | InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private static class ReceiveOrder implements Runnable {
-        private Socket clientSocket;
-        private ObjectInputStream inStream;
+    public static void Initialization(){
+        try {
+            System.out.println("Server is listening on port " + PORT);
+            serverSocket = new ServerSocket(PORT);
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected: " + clientSocket.getInetAddress());
 
-        public ReceiveOrder(Socket socket, ObjectInputStream inStream) {
-            this.clientSocket = socket;
-            this.inStream = inStream;
+            clientWriter = new ObjectOutputStream(clientSocket.getOutputStream());
+            inStream = new ObjectInputStream(clientSocket.getInputStream());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static class ReceiveOrder implements Runnable {
+        public ReceiveOrder() {
         }
 
         @Override
         public void run() {
             try {
-                while (!clientSocket.isClosed()) {
+                while (true) {
+
                     try {
                         Order inputLine = (Order) inStream.readObject();
-                        if (inputLine == null) {
-                            break;
+                        if (inputLine != null) {
+                            System.out.println("Received order: " + inputLine);
+                            orderQueue.offer(inputLine);
                         }
-
-                        System.out.println("Received order: " + inputLine);
-                        orderQueue.offer(inputLine);
-                    } catch (EOFException e) {
-                        System.out.println("Client disconnected.");
-                        break;
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
                     }
                 }
-
-                inStream.close();
-                clientSocket.close();
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
     private static class ProcessOrder implements Runnable {
-        private ObjectOutputStream clientWriter;
 
-        public ProcessOrder(ObjectOutputStream clientWriter) {
-            this.clientWriter = clientWriter;
+        public ProcessOrder() {
         }
 
         @Override
         public void run() {
             while (true) {
+
                 Order order = orderQueue.poll();
                 if (order != null) {
                     System.out.println("Processing order: " + order);
@@ -96,6 +100,7 @@ public class Server {
             synchronized (clientWriter) {
                 order.status = "Delivered";
                 clientWriter.writeObject(order);
+                clientWriter.flush();
             }
         }
     }
