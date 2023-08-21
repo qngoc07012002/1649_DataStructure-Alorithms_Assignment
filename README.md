@@ -32,3 +32,5 @@ A confirmation message confirms the successful sorting of the orders.
 **Unbox and Export all Orders:**
 Users can select this option to export orders from the order stack.
 Exported orders are written to a designated file with their status marked as "Opened."
+
+![image](https://github.com/qngoc07012002/1649_DataStructure-Alorithms_Assignment/assets/116235732/472f8c72-c636-4100-bf3d-6eb33267aee8)
